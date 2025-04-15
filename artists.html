@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artists - Artist Discovery</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .artist-card {
+      cursor: pointer;
+    }
+    .artist-detail {
+      display: none;
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .track-list {
+      margin-top: 1rem;
+    }
+
+    .track {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #333;
+    }
+
+    .track:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">ArtistDiscovery</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="artists.html">Artists</a></li>
+        <li><a href="concerts.html">Concerts</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Artists</h1>
+      <p>Explore the profiles of your favorite performers</p>
+    </div>
+  </header>
+
+  <main class="cards">
+    <div class="card artist-card" onclick="showArtist('artist1')">
+      <div class="img-placeholder"></div>
+      <h3>Billie Eilish</h3>
+    </div>
+    <div class="card artist-card" onclick="showArtist('artist2')">
+      <div class="img-placeholder"></div>
+      <h3>The Weeknd</h3>
+    </div>
+  </main>
+
+  <section id="artist1" class="artist-detail">
+    <h2>Billie Eilish</h2>
+    <div class="track-list">
+      <div class="track"><span>Bad Guy</span><span>3:14</span></div>
+      <div class="track"><span>Ocean Eyes</span><span>3:20</span></div>
+      <div class="track"><span>Happier Than Ever</span><span>4:58</span></div>
+    </div>
+  </section>
+
+  <section id="artist2" class="artist-detail">
+    <h2>The Weeknd</h2>
+    <div class="track-list">
+      <div class="track"><span>Blinding Lights</span><span>3:20</span></div>
+      <div class="track"><span>Starboy</span><span>3:50</span></div>
+      <div class="track"><span>Save Your Tears</span><span>3:35</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Artist Discovery</p>
+  </footer>
+
+  <script>
+    function showArtist(id) {
+      document.querySelectorAll('.artist-detail').forEach(el => el.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
