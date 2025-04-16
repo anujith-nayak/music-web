@@ -15,16 +15,26 @@
   <p id="output">Loading...</p>
 
   <script>
-    fetch("https://music-api-my8q.onrender.com/")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("output").innerText = data;
-      })
-      .catch(error => {
-        document.getElementById("output").innerText = "Error: " + error;
-        console.error("Error:", error);
+  fetch("https://music-api-my8q.onrender.com/songs")
+    .then(response => response.json())
+    .then(data => {
+      const output = document.getElementById("output");
+      output.innerHTML = "<h2>Songs List</h2>";
+
+      data.forEach(song => {
+        output.innerHTML += `
+          <div>
+            <strong>${song.title}</strong> by ${song.artist}<br>
+          </div>
+        `;
       });
-  </script>
+    })
+    .catch(error => {
+      document.getElementById("output").innerText = "Error loading songs.";
+      console.error("Fetch error:", error);
+    });
+</script>
+
 
 
   <header>
